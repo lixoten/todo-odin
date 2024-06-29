@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO V1</title>
+    <style>
+        html {
+            font-size: 16px;
+        }
+        #container {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+        }
+        #header {
+            background-color: chocolate;
+            grid-column-start: 1;
+            grid-column-end: -1;
+            /*grid-row-start: 1;*/
+            /*grid-row-end: 2;*/
+
+        }
+        #aside {
+            background-color: cornflowerblue;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            /*grid-row-start: 2;*/
+            /*grid-row-end: 3;*/
+        }
+        #main {
+            background-color: cornsilk;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            /*grid-row-start: 2;*/
+            /*grid-row-end: 3;*/
+        }
+        #footer {
+            background-color: darkgrey;
+            grid-column-start: 1;
+            grid-column-end: -1;
+            /*grid-row-start: 3;*/
+            /*grid-row-end: 4;*/
+        }
+        #add-todo-button {
+            display: flex;
+            gap: 30px;
+            font-size: 1.5rem;
+            border-radius: 8px;
+        }
+        #todo-list {
+            list-style-type: none;
+            margin-left: -25px;
+            /*margin: 5px 5px 5px -25px;*/
+        }
+        #todo-list li {
+            background-color: darkgoldenrod;
+            margin: 5px 0;
+            padding: 5px;
+            display: flex;
+            /*line-height: 3rem;*/
+            align-items: center;
+            gap: 8px;
+            justify-content: space-between;
+        }
+        #todo-list li:hover,
+        #todo-list li:active {
+
+        }
+        #todo-list li:hover .set-todo {
+            display: none;
+        }
+        #todo-list li:hover .set-todo {
+            display: none;
+        }
+        #todo-list li .delete-todo,
+        #todo-list li .edit-todo {
+            display: none;
+        }
+
+        #todo-list li:hover .delete-todo {
+            display: initial;
+        }
+        #todo-list-list li:hover .edit-todo {
+            display: initial;
+            margin-left: auto;
+        }
+
+        #add-todo {
+            display: none;
+        }
+        #add-todo.show {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <header id="header">head</header>
+    <aside id="aside">
+        <h2>Todo List</h2>
+        <button id="add-todo-button">+ Todo</button>
+        <div id="add-todo">
+            <input id="input-todo-name" type="text">
+            <button id="save-todo">Add</button>
+            <button id="cancel-todo">Cancel</button>
+        </div>
+        <ul id="todo-list">
+            <li>Todo 1
+                <img class='set-todo' src="../assets/images/option.png">
+                <img class='edit-todo' src="../assets/images/edit-text.png">
+                <img class='delete-todo' src="../assets/images/delete.png">
+            </li>
+            <li>Todo 2
+                <img class='set-todo' src="../assets/images/option.png">
+                <img class='edit-todo' src="../assets/images/edit-text.png">
+                <img class='delete-todo' src="../assets/images/delete.png">
+            </li>
+            <li>Todo 3
+                <img class='set-todo' src="../assets/images/option.png">
+                <img class='edit-todo' src="../assets/images/edit-text.png">
+                <img class='delete-todo' src="../assets/images/delete.png">
+            </li>
+        </ul>
+    </aside>
+    <main id="main">xxx</main>
+    <footer id="footer">xxx</footer>
+</div>
+<script type="module" src="main.js"></script>
+
+</body>
+</html>
+<!--<script src="/main.bundsssle.js"></script>-->

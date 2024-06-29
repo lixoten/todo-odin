@@ -1,0 +1,6 @@
+/node_modules/
+/save/
+/Topics/
+*.idea
+*.py
+requirements.txt
