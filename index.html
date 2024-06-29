@@ -40,56 +40,74 @@
             /*grid-row-start: 3;*/
             /*grid-row-end: 4;*/
         }
-        #add-todo-button {
+        #add-project-button {
             display: flex;
             gap: 30px;
             font-size: 1.5rem;
             border-radius: 8px;
         }
-        #todo-list {
+        #project-list {
             list-style-type: none;
             margin-left: -25px;
             /*margin: 5px 5px 5px -25px;*/
         }
-        #todo-list li {
+        #project-list li {
             background-color: darkgoldenrod;
             margin: 5px 0;
-            padding: 5px;
+            padding-right: 8px;
             display: flex;
-            /*line-height: 3rem;*/
+            line-height: 2rem;
+            /*height: 3rem;*/
             align-items: center;
             gap: 8px;
             justify-content: space-between;
         }
-        #todo-list li:hover,
-        #todo-list li:active {
+        #project-list li:hover,
+        #project-list li:active {
 
         }
-        #todo-list li:hover .set-todo {
+        #project-list li:hover .set-project {
             display: none;
         }
-        #todo-list li:hover .set-todo {
+        #project-list li:hover .set-project {
             display: none;
         }
-        #todo-list li .delete-todo,
-        #todo-list li .edit-todo {
+        #project-list li .delete-project,
+        #project-list li .edit-project {
             display: none;
         }
 
-        #todo-list li:hover .delete-todo {
+        #project-list li:hover .delete-project {
             display: initial;
         }
-        #todo-list-list li:hover .edit-todo {
+        #project-list li:hover .edit-project {
             display: initial;
             margin-left: auto;
         }
 
-        #add-todo {
+        #add-project {
             display: none;
         }
-        #add-todo.show {
+        #add-project.show {
             display: block;
         }
+
+        .fii {
+            background-color: yellow;
+            width: 100%;
+        }
+
+
+        #main h1 {
+            text-align: center;
+            font-size: 3rem;
+        }
+
+        #divider {
+            border-bottom: 4px solid red;
+            font-size: 3rem;
+        }
+
 
     </style>
 </head>
@@ -97,32 +115,23 @@
 <div id="container">
     <header id="header">head</header>
     <aside id="aside">
-        <h2>Todo List</h2>
-        <button id="add-todo-button">+ Todo</button>
-        <div id="add-todo">
-            <input id="input-todo-name" type="text">
-            <button id="save-todo">Add</button>
-            <button id="cancel-todo">Cancel</button>
+        <h2>Project List</h2>
+        <button id="add-project-button">+ Project</button>
+        <div id="add-project">
+            <input id="input-project-name" type="text">
+            <button id="save-project">Add</button>
+            <button id="cancel-project">Cancel</button>
         </div>
-        <ul id="todo-list">
-            <li>Todo 1
-                <img class='set-todo' src="assets/images/option.png" alt="booo">
-                <img class='edit-todo' src="assets/images/edit-text.png" alt="booo">
-                <img class='delete-todo' src="assets/images/delete.png" alt="booo">
-            </li>
-            <li>Todo 2
-                <img class='set-todo' src="assets/images/option.png" alt="booo">
-                <img class='edit-todo' src="assets/images/edit-text.png" alt="booo">
-                <img class='delete-todo' src="assets/images/delete.png" alt="booo">
-            </li>
-            <li>Todo 3
-                <img class='set-todo' src="assets/images/option.png" alt="booo">
-                <img class='edit-todo' src="assets/images/edit-text.png" alt="booo">
-                <img class='delete-todo' src="assets/images/delete.png" alt="booo">
-            </li>
+        <ul id="project-list">
         </ul>
     </aside>
-    <main id="main">xxx</main>
+    <main id="main">
+        <h1 id="curr-project-name">xxxx</h1>
+        <div id="divider">Todo's</div>
+        <div id="task-container">
+
+        </div>
+    </main>
     <footer id="footer">xxx</footer>
 </div>
 <script type="module" src="src/main.js"></script>

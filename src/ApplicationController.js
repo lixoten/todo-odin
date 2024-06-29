@@ -1,30 +1,28 @@
-// ApplicationController.js
-import TodoList from './TodoList.js';
-// import Todo from "./Todo.js";
+// ApplicationController.js // use by the DOMHandler
+import ProjectList from "./ProjectList.js";
 
 class ApplicationController {
     constructor() {
+        this.projectList = new ProjectList();
 
-        this.todoList = new TodoList();
-        // Create Default todo and add it to TodoList Class
-        this.todoList.addTodo('Default')
-
+        // Create Default Project and add it to ProjectList Class
+        // Later on these will come from Local Storage
+        // So we will need to load them. if empty we then create a default
+        this.projectList.addProject('Default');
     }
 
-
-    getTodos() {
-        return this.todoList.todoList;
+    getAllProjects() {
+        return this.projectList.projectList;
     }
 
-    removeTodo(id) {
-        this.todoList.removeTodo(id);
-        console.log(this.todoList)
+    removeProject(id) {
+        this.projectList.removeProject(id);
+        console.log(this.projectList)
     }
 
-    addTodo(name) {
-        return this.todoList.addTodo(name)
+    addProject(name) {
+        return this.projectList.addProject(name)
     }
-
 }
 
 export default ApplicationController;

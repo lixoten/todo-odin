@@ -1,6 +1,6 @@
-export default class Todo {
+class Todo {
     constructor(id, name) {
-        this.id = id;
+        this._id = id;
         this._name = name;
     }
 
@@ -8,9 +8,17 @@ export default class Todo {
         return this._name;
     }
 
-    // editTodo(newName) {
+    // Todo
+    // editProject(newName) {
     //     if (newName!== undefined) {
     //         this.name = newName;
     //     }
     // }
 }
+
+function createTodo(id, name) {
+    return new Todo(id, name);
+}
+
+export default Todo;
+export { createTodo };

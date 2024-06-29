@@ -1,79 +1,101 @@
 // DOMHandler.js
-import ApplicationController from "./ApplicationController.js";
+//import ApplicationController from "./ApplicationController.js";
 
 export default class DOMHandler {
-    constructor() {
+    constructor(appController) {
+        this.app = appController;
+
         this.elements = {
-            addTodoButton: document.getElementById("add-todo-button"),
-            addTodoContainer: document.getElementById("add-todo"),
-            inputTodoName: document.getElementById("input-todo-name"),
-            saveTodoButton: document.getElementById("save-todo"),
-            cancelTodoButton: document.getElementById("cancel-todo"),
+            addProjectButton: document.getElementById("add-project-button"),
+            addProjectContainer: document.getElementById("add-project"),
+            inputProjectName: document.getElementById("input-project-name"),
+            saveProjectButton: document.getElementById("save-project"),
+            cancelProjectButton: document.getElementById("cancel-project"),
 
-            todoList: document.getElementById("todo-list"),
-            deleteItem: document.getElementById("todo-list"),
+            projectList: document.getElementById("project-list"),
+
+            main: document.getElementById("main"),
+
         }
 
-        this.app = new ApplicationController();
+        // Here are get all projects from ProjectList Class via ApplicationController
+        this.projectList = this.app.getAllProjects()
 
-        this.todoList = this.app.getTodos();
-
-        for (const todo of this.todoList) {
-            this.displayTodoInDom(todo.id, todo.name);
+        for (const project of this.projectList) {
+            this.displayProjectList(project.id, project.name);
         }
 
-
-        this.elements.addTodoButton.addEventListener("click", () => {
-            this.elements.addTodoContainer.classList.toggle("show")
+        this.elements.addProjectButton.addEventListener("click", () => {
+            this.elements.addProjectContainer.classList.toggle("show")
         });
 
-        this.elements.cancelTodoButton.addEventListener("click", () => {
-            this.elements.addTodoContainer.classList.toggle("show")
+        this.elements.cancelProjectButton.addEventListener("click", () => {
+            this.elements.addProjectContainer.classList.toggle("show")
         })
 
-        this.elements.saveTodoButton.addEventListener("click", () => {
-            this.elements.addTodoContainer.classList.toggle("show")
-            const todoName = this.elements.inputTodoName.value;
-            const newId = this.app.addTodo(todoName)
-            this.displayTodoInDom(newId, todoName);
+        this.elements.saveProjectButton.addEventListener("click", () => {
+            this.elements.addProjectContainer.classList.toggle("show")
+            const projectName = this.elements.inputProjectName.value;
+            const newId = this.app.addProject(projectName)
+            this.displayProjectList(newId, projectName);
         })
-
 
     }
 
-
-    displayTodoInDom(todoId, todoName) {
+    displayProjectList(projectId, projectName) {
         const listItem = document.createElement('li');
-        listItem.textContent = todoName + todoId;
-        this.elements.todoList.appendChild(listItem);
+
+        const nameBox = document.createElement('div');
+        nameBox.classList.add("fii")
+        nameBox.textContent = projectName + projectId;
+        listItem.appendChild(nameBox);
+
+        this.elements.projectList.appendChild(listItem);
 
         const img1 = document.createElement('img');
-        img1.classList.add("set-todo")
+        img1.classList.add("set-project")
         img1.setAttribute("src", "../assets/images/option.png");
         listItem.appendChild(img1);
 
         const img2 = document.createElement('img');
-        img2.classList.add("edit-todo")
+        img2.classList.add("edit-project")
         img2.setAttribute("src", "../assets/images/edit-text.png");
         listItem.appendChild(img2);
 
         const img3 = document.createElement('img');
-        img3.classList.add("delete-todo")
+        img3.classList.add("delete-project")
         img3.setAttribute("src", "../assets/images/delete.png");
         listItem.appendChild(img3);
 
-        img1.addEventListener("click", () => {
-            console.log(`set control- ${todoId}`)
-        })
 
-        img2.addEventListener("click", () => {
-            console.log(`Edit - ${todoId}`)
-        })
+        this.setupEventListeners(img1, projectId, projectName, "set");
+        this.setupEventListeners(img2, projectId, projectName, "edit");
+        this.setupEventListeners(img3, projectId, projectName, "del");
+        this.setupEventListeners(nameBox, projectId, projectName, "trig");
+    }
 
-        img3.addEventListener("click", () => {
-            console.log(`Removed - ${todoId}`)
-            listItem.remove();
-            this.app.removeTodo(todoId)
-        })
+    setupEventListeners(element, projectId, projectName, action) {
+        element.addEventListener("click", () => {
+            if (action === 'trig') {
+                console.log(`trig control- ${projectId}`);
+                this.displaySelectedProject(projectId, projectName);
+            }
+            if (action === 'set') {
+                console.log(`set control- ${projectId}`);
+            } else if (action === 'edit') {
+                console.log(`Edit - ${projectId}`);
+            } else if (action === 'del') {
+                console.log(`Removed - ${projectId}`);
+                element.parentElement.remove();
+                this.app.removeProject(projectId);
+            }
+        });
+    }
+
+    displaySelectedProject(projectId, projectName) {
+        const currProjectName = document.getElementById('curr-project-name');
+        currProjectName.textContent = projectName;
+
+        // todo() - we need to get all todos from the Project Class
     }
 }

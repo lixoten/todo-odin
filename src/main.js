@@ -1,3 +1,5 @@
+import ApplicationController from "./ApplicationController.js";
 import DOMHandler from "./DOMHandler.js";
 
-const domHandler = new DOMHandler();
+const appController = new ApplicationController();
+new DOMHandler(appController);
