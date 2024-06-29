@@ -54,17 +54,17 @@ export default class DOMHandler {
 
         const img1 = document.createElement('img');
         img1.classList.add("set-project")
-        img1.setAttribute("src", "../assets/images/option.png");
+        img1.setAttribute("src", "/assets/images/option.png");
         listItem.appendChild(img1);
 
         const img2 = document.createElement('img');
         img2.classList.add("edit-project")
-        img2.setAttribute("src", "../assets/images/edit-text.png");
+        img2.setAttribute("src", "/assets/images/edit-text.png");
         listItem.appendChild(img2);
 
         const img3 = document.createElement('img');
         img3.classList.add("delete-project")
-        img3.setAttribute("src", "../assets/images/delete.png");
+        img3.setAttribute("src", "/assets/images/delete.png");
         listItem.appendChild(img3);
 
 
