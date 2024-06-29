@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <title>TODO V1</title>
     <style>
+        * {
+            /*padding: 0;*/
+            /*margin: 0;*/
+        }
         html {
             font-size: 16px;
         }
         #container {
             display: grid;
             grid-template-columns: 200px 1fr;
+            grid-template-rows: 50px calc(100vh - 100px) 50px;
         }
         #header {
             background-color: chocolate;
@@ -20,11 +25,13 @@
 
         }
         #aside {
-            background-color: cornflowerblue;
+            background-color: cornsilk;
             grid-column-start: 1;
             grid-column-end: 2;
             /*grid-row-start: 2;*/
             /*grid-row-end: 3;*/
+
+            border-right: 3px solid gray;
         }
         #main {
             background-color: cornsilk;
@@ -52,7 +59,7 @@
             /*margin: 5px 5px 5px -25px;*/
         }
         #project-list li {
-            background-color: darkgoldenrod;
+            /*background-color: darkgoldenrod;*/
             margin: 5px 0;
             padding-right: 8px;
             display: flex;
@@ -93,8 +100,10 @@
         }
 
         .fii {
-            background-color: yellow;
+            /*background-color: yellow;*/
             width: 100%;
+            border-bottom: 3px solid gray;
+            font-weight: bolder;
         }
 
 
